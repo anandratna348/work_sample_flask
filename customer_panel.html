@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Panel</title>
+</head>
+<body>
+    <h1>Customer Panel</h1>
+    <h2>Available Products</h2>
+    <ul>
+        {% for product in products %}
+        <li>{{ product }}</li>
+        {% endfor %}
+    </ul>
+    <form action="/place_order/{{ product.id }}" method="POST">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="{{ product.quantity }}" required>
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>
